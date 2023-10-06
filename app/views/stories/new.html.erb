@@ -1,0 +1,11 @@
+<h1>Create New Story </h1>
+<%=form_with model: @story, local:true do |form|%>
+  <%= form.label :choose_file %><br />
+  <%=form.file_field :picture ,direct_upload:true,required:true,accept:"image/x-png,image/gif,image/jpeg"%><br>
+  <br>
+  <%=form.submit 'Add Story'%><br>
+<%end%>
+<%if current_account.stories.exists?%>
+  <%= render @stories  %>
+<%else%>
+<%end%>

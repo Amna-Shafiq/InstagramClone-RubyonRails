@@ -1,0 +1,22 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: igclone_development
+  pool: 5
+  host: localhost
+  username: amna
+  password: 'igclone1'
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: igclone_test
+  pool: 5
+  username: amna
+  password: 'igclone1'
+
+staging:
+  url: <%= ENV['DATABASE_URL'] %>
+
+production:
+  url: <%= ENV['DATABASE_URL'] %>

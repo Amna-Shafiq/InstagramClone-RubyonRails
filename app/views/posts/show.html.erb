@@ -1,0 +1,21 @@
+<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+  <div style="margin-left:500px;">
+    <%= render partial: 'accounts/images', locals: { post: @post }%>
+  </div>
+  <div class="col-lg-6 text-center ">
+    <span> <%="Caption"%> :<u><%=@post.caption%> </u> </span>
+  </div>
+  <div class="col-lg-6 text-center text-lg-start mb-3 m-lg-0">
+    <%= render partial: 'accounts/like_button', locals: { post: @post }%>
+  </div>
+  <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+    <button onClick="showComments(<%=@post.id%>)" class= "btn btn-outline-success">Show comments</button>
+    <div id="comments-<%=@post.id%>">
+      <%= render @post.comments %>
+    </div>
+    <h5 id="counts-<%=@post.id%>" ><%=@post.comments.count %> Comments</h5>
+    <h5>Add a Comment:</h5>
+    <div>
+      <%= render 'comments/form', :@post => @post %>
+    </div>
+  </div>

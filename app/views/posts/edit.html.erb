@@ -1,0 +1,7 @@
+<h1>Edit Post</h1>
+<%=form_with  model: @post,local:true do  |form|%>
+  <%= form.label :Caption%><br />
+  <%=form.text_area :caption,:as=> :text, :maxlength => 500%><br>
+  <br>
+  <%=form.submit%><br>
+<%end%>

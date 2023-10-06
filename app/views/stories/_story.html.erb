@@ -1,0 +1,25 @@
+<% if story.picture.attached? %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col"> </th>
+        <th scope="col"><br/>
+          <th scope="col">Date/Time Updated<br/>
+          </th>
+          <th scope="col"> </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row"></th>
+          <td><%= image_tag(story.picture_attachment, width: 60,height: 60) %></td>
+          <td><%= story.created_at %></td>
+          <td><%= button_to 'View Story', show_stories_path(story.id), method: :get %></td>
+          <%if current_account.id == story.account_id%>
+            <td><%= button_to 'Delete Story', story_path(story.id), method: :delete %></td>
+          <%else%>
+          <%end%>
+        </tr>
+        <tbody>
+        </table>
+      <% end %>

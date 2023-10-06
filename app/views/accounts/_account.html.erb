@@ -1,0 +1,36 @@
+<div class="well">
+  <h3><%='Suggested Accounts'%> </h3>
+  <% @users.each do |user| %>
+    <p >
+      <% if user.profile_picture.attached?%>
+        <%= image_tag(user.profile_picture_attachment ,class: "rounded-circle", width: 60,height: 60) %><br/>
+      <% else %>
+        <%=image_tag "image1.png",class: "rounded-circle", width: 60,height: 60 %>
+      <% end %>
+      <%= link_to user.user_name , account_path(user.id)%><br/>
+      <%= render partial: 'accounts/follow', locals: { account: user } %>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <% @users.each do |user| %>
+    <% if follower_posts=follower_exists(user) %>
+      <% user.posts.each do |post| %>
+        <div class="col-lg-4">
+          <div class="card shadow">
+            <%= render partial: 'accounts/images', locals: { post: post }%>
+            <div class="card-body">
+              <%= render partial: 'accounts/caption', locals: { user: user,post: post }%>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <%= render partial: 'accounts/like_button', locals: { post: post }%>
+                  <%= button_to 'Comment', post_path(post), method: :get,class: "btn-sm btn-primary" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+    <% end %>
+  <% end %>

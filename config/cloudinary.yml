@@ -1,0 +1,13 @@
+development:
+  cloud_name: "dplttssxp"
+  api_key: "192456465896584"
+  api_secret: "jbrLXZyK3Yxanq6RC3Xr_A9vVr8"
+  secure: true
+  enhance_image_tag: true
+  static_file_support: false
+
+production:
+  cloud_name: "dplttssxp"
+  api_key: "192456465896584"
+  api_secret: "jbrLXZyK3Yxanq6RC3Xr_A9vVr8"
+  secure: true

@@ -1,0 +1,8 @@
+<h1>Create New Post</h1>
+<%=form_with model: @post,local:true do |form|%>
+  <%= form.label :caption %><br />
+  <%=form.text_area :caption%><br>
+  <%=form.file_field :images, multiple: true,accept:"image/x-png,image/gif,image/jpeg"%><br>
+  <br>
+  <%=form.submit%><br>
+<%end%>

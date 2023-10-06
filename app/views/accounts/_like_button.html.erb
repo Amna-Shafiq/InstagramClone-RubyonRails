@@ -1,0 +1,9 @@
+<div class="btn-group">
+  <%= post.likes.count %> <%= show_like(post)%>
+  <% pre_like = find_like(post)%>
+  <% if pre_like %>
+    <%= button_to 'Unlike', post_like_path(post,pre_like), method: :delete,:class=>'btn btn-warning' %>
+  <% else %>
+    <%= button_to 'Like', post_likes_path(post), method: :post,remote: true,:class=>'btn btn-success' %>
+  <% end %>
+</div>

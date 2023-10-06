@@ -1,0 +1,27 @@
+<section class="border-bottom mb-3">
+  <div class="row mb-4">
+    <div class="col-2">
+      <%if comment.account.profile_picture.attached?%>
+        <%= image_tag(comment.account.profile_picture_attachment, class:"img-fluid shadow-1-strong rounded-5",width:50,height:50) %>
+      <%else%>
+        <%=image_tag "image1.png",class:"img-fluid shadow-1-strong rounded-5",width:50,height:50%>
+      <%end%>
+    </div>
+    <div class="col-10">
+      <p class="mb-2"><strong> <%= comment.account.user_name %>:</strong></p>
+      <p>
+        <%= comment.content %>
+      </p>
+      <div class="text-muted ">
+        <%="#{time_ago_in_words(comment.created_at)} ago" if comment.created_at %> <br>
+      </div>
+      <%if current_account.id == comment.account_id%>
+        <%= button_to 'Delete', post_comment_path(comment.post_id,comment.id),class:'btn btn-danger', method: :delete%>
+      <%else%>
+      <%end%>
+      <%if current_account.id == comment.account_id%>
+        <%= button_to 'Edit', edit_post_comment_path(comment.post_id,comment.id),class:'btn btn-warning', method: :get%>
+      <%end%>
+    </div>
+  </div>
+</section>

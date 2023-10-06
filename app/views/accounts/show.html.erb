@@ -1,0 +1,52 @@
+<div class="container">
+  <section class="vh-10" >
+    <div class="container py-5 h-10">
+      <div class="row d-flex align-items-center h-10">
+        <div class="col col-md-9 col-lg-7 col-xl-5">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-4">
+              <div class="d-flex text-black">
+                <div class="flex-shrink-0 img-fluid", style="width: 220px; border-radius: 10px;">
+                  <%=render 'accounts/profile_picture'%>
+                </div>
+                <div class="flex-grow-1 ms-3">
+                  <h5 class="mb-1"><%=@account.user_name%></h5>
+                  <p class="mb-2 pb-1" style="color: #2b2a2a;"> <%= @account.first_name %> <%= @account.last_name %></p>
+                  <p class="mb-2 pb-1" style="color: #2b2a2a;"><i class="glyphicon glyphicon-envelope"></i> <%= @account.email %></p>
+                  <p class="mb-2 pb-1" style="color: #2b2a2a;">Bio:
+                    <%=@account.description %></p>
+                  <div class="d-flex justify-content-start rounded-3 p-2 mb-2"
+                  style="background-color: #efefef;">
+                    <div>
+                      <p class="small text-muted mb-1">Posts</p>
+                      <p class="mb-0"><%=@account.posts.count%></p>
+                    </div>
+                    <div class="px-3">
+                      <p class="small text-muted mb-1">Followers</p>
+                      <p class="mb-0"><%=followers_count(@account)%></p>
+                    </div>
+                  </div>
+                  <div class="d-flex pt-1">
+                    <% if @account == current_account%>
+                      <%= link_to 'Edit Profile',  edit_account_registration_path , class:"btn btn-outline-primary flex-grow-1" %>
+                      <%= link_to 'Requests',  requests_path , class:"btn btn-primary flex-grow-1" %>
+                    <% else %>
+                      <%= render partial: 'accounts/follow', locals: { account: @account } %>
+                      <% if @account.stories.exists%>
+                        <%= button_to 'Stories', story_path(@account.id),class:"btn btn-outline-primary flex-grow-1", method: :get%>
+                      <% end %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="row">
+    <% if @account.posts.exists?%>
+      <%= render partial: 'posts/post', locals: { posts: @posts } %>
+    <% end %>
+  </div>

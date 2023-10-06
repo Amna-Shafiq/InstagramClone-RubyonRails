@@ -1,0 +1,6 @@
+<%= search_form_for(@search, url: search_path, method: :get, class:'d-flex') do |f| %>
+  <%= f.search_field :user_name_or_first_name_cont,
+   placeholder: "Search by User Name....",
+   class: "form-control me-2" %>
+  <%= f.submit  class:"btn btn-success" %>
+<% end %>

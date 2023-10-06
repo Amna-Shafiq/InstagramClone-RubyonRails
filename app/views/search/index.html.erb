@@ -1,0 +1,18 @@
+<h1 class="text-center"><%=pluralize(@accounts.count,"Result")%>
+  <%= render "search/form"%>
+  <div class="container">
+    <table class="table table-light table-striped">
+      <thread>
+        <tr>
+          <th><%= sort_link(@search,:user_name,"",default_order: :asc)%></th>
+        </tr>
+      </thread>
+      <tbody>
+        <% @accounts.each do |account|%>
+          <tr>
+            <td><%= link_to account.user_name, account_path(account.id)%></td>
+          </tr>
+        <% end%>
+      </tbody>
+    </table>
+  </div>

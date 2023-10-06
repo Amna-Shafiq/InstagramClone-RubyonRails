@@ -1,0 +1,29 @@
+<%if @followers.present?%>
+  <% @followers.each do |follower| %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col"> </th>
+          <th scope="col">User Name<br/>
+            <th scope="col"><br/>
+            </th>
+            <th scope="col"> </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"></th>
+            <td><%= follower.account.user_name%></td>
+            <td><%= link_to 'Accept',  request_path(follower) ,method: :put, :class=>"btn btn-success" %>
+            </td>
+            <td> <%= link_to 'Reject',  account_follower_path(current_account,follower) , method: :delete , :class=>"btn btn-danger" %>
+            </td>
+          </tr>
+          <tbody>
+          </table>
+        <%end%>
+      <%else%>
+        <div class='text-center'>
+          <h1> <%= 'No requests'%></h1>
+        </div>
+      <%end%>

@@ -1,0 +1,5 @@
+<%= form_for [@post, @post.comments.build], remote: true do |form| %>
+  <%=form.label :comment%>
+  <%=form.text_area :content,:as=> :text, :maxlength => 300,required:true%>
+  <%=form.submit%>
+<%end%>

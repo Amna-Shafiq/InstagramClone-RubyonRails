@@ -1,0 +1,6 @@
+<% pre_follow = find_follower(account) %>
+<% if pre_follow %>
+  <%= button_to "#{pre_follow.pending? ? 'Pending' : 'Unfollow'}", account_follower_path(current_account,pre_follow.following),class:"btn btn-primary flex-grow-1", method: :delete %>
+<% else %>
+  <%= button_to 'Follow', account_followers_path(account.id),class:"btn btn-primary flex-grow-1", method: :post %>
+<% end %>

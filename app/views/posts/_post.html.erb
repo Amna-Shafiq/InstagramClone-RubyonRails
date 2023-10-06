@@ -1,0 +1,22 @@
+ <% @posts.each do |post| %>
+  <div class="col-lg-4">
+    <div class="card shadow">
+      <%= render partial: 'accounts/images', locals: { post: post }%>
+      <div class="card-body">
+        <%= render partial: 'accounts/caption', locals: { user: @account,post: post }%>
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="btn-group">
+            <%= render partial: 'accounts/like_button', locals: { post: post }%>
+            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+              <%if @account == current_account%>
+                <%= link_to 'Edit Post',  edit_post_path(post),:class=>"btn btn-outline-primary mt-auto"%>
+                <%= link_to 'Delete Post',  post_path(post), method: :delete ,remote: true,:class=>"btn btn-outline-secondary mt-auto"%>
+              <%end%>
+              <%= button_to 'Comment', post_path(post), method: :get,class: "btn-sm btn-primary" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<%end%>

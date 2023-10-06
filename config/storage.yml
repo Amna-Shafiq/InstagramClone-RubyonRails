@@ -1,0 +1,16 @@
+test:
+  service: Disk
+  root: <%= Rails.root.join("tmp/storage") %>
+
+local:
+  service: Disk
+  root: <%= Rails.root.join("storage") %>
+
+cloudinary:
+  service: Cloudinary
+  cloud_name: "dplttssxp"
+  api_key: "192456465896584"
+  api_secret: "jbrLXZyK3Yxanq6RC3Xr_A9vVr8"
+  secure: true
+
+

@@ -1,0 +1,6 @@
+{
+  "name": "InstaClone",
+  "private": true,
+  "dependencies": {},
+  "proxy": "http://localhost:3000"
+}

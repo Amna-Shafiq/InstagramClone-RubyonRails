@@ -1,0 +1,34 @@
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <section class="vh-10" style="background-color: white;">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div class="card shadow-2-strong" style="border-radius: 1rem;">
+            <div class="card-body p-5 text-center">
+              <h3 class="mb-5">Log in</h3>
+              <div class="field form-outline mb-4">
+                <%= f.label :email %><br />
+                <%= f.email_field :email, autofocus: true, autocomplete: "email",:class=>"form-control form-control-lg",require: true %>
+              </div>
+              <div class="field form-outline mb-4">
+                <%= f.label :password %><br />
+                <%= f.password_field :password, autocomplete: "current-password",:class=>"form-control form-control-lg",require: true  %>
+              </div>
+              <% if devise_mapping.rememberable? %>
+                <div class="field form-check d-flex justify-content-start mb-4">
+                  <%= f.check_box :remember_me ,:class=>"form-check-input"%>
+                  <%= f.label :remember_me ,:class=>"form-check-label"%>
+                </div>
+              <% end %>
+              <div class="actions">
+                <%= f.submit "Log in" ,:class=>"btn btn-primary"%>
+              </div>
+            </div>
+          </div>
+          <%= render "devise/shared/links"  %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section>

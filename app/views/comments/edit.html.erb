@@ -1,0 +1,7 @@
+<h1>Edit Comment</h1>
+<%= form_for [@post, @comment], remote: true do |form| %>
+  <%=form.label :comment%>
+  <%=form.text_area :content,:as=> :text, :maxlength => 300%>
+  <%= hidden_field_tag :previous_request, request.referer %>
+  <%=form.submit%>
+<%end%>
